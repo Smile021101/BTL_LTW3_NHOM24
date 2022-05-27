@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head :: head"></head>
+
+<body>
+
+	<div th:replace="/fragments/search :: search"></div>
+	<div class="center" action="/question">
+		<div style="margin-left: 220px;"></div>
+		<form action="/question" method="post">
+			<div class="body-center">
+				<div class="h-question">
+					<div class="form-question fr">
+						<div class="info-question1">
+							<ul>
+								<li><i class="far fa-user"></i></li>
+								<li>Câu hỏi của</li>
+								<li><a th:href="@{'/user_other/{id}'(id=${question.user.id})}"><span
+											th:text="${question.user.username}"></span></a></li>
+								<li>Chủ đề:</li>
+								<li><a
+										th:href="@{'/{field}'(field=${question.field.substring(0,3)+question.field.substring(4)})}"><span
+											th:text="${question.field}"></span></a></li>
+							</ul>
+						</div>
+						<div class="info-question2 pt12 pb12" style="margin-left: 40px;"><span
+								th:text="${question.body}"></span>
+						</div>
+
+						<div class="comment-ques" id="cmt_question_4616473"
+							style="scroll-margin-top: 55px; padding-left:30px;">
+							<div class="pd12  bg-comment">
+								<h4 class="fw800" style="margin-block-end: 5px;">Bình luận của câu hỏi</h4>
+								<div class="list-comment" th:each="commentq : ${question.comments}">
+									<ul>
+										<li>
+											<i class="far fa-user"></i>
+											<a th:href="@{'/user_other/{id}'(id=${commentq.user.id})}"><span
+													th:text="${commentq.user.username}">
+
+												</span></a>
+
+											<p style="margin-left:43px"><span th:text="${commentq.body}"></span></p>
+
+										</li>
+
+									</ul>
+								</div>
+
+								<div class="main-area fix pt12" th:object="${commentQ}">
+									<div class="block-cmt">
+										<div class="avt36 mr12 bd1 fl"><i class="far fa-user"
+												style="padding-top: 20px; padding-left:9px;" s></i></div>
+										<textarea class="form-textarea comment" placeholder="Viết bình luận!!" rows="1"
+											name="content" id="comment_text" cols="30" role="textbox"
+											aria-autocomplete="list" aria-haspopup="true"
+											style="opacity: 1; pointer-events: unset;" th:field="*{body}"></textarea>
+										<a class="submit-commt" style="opacity: 1; pointer-events: unset;"
+											th:href="@{'/question/cmtq'}"><i class="far fa-paper-plane"
+												style="width: 30px; padding-bottom:20px;"></i><input type="submit"
+												class="green-btn" value="Bình luận" /></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="h-question">
+					<div class="form-question fr">
+						<h2 class="pb12 fw800" style="text-align: center;">Các câu trả lời</h2>
+						<div class="comment-ques " id="cmt_question_4616473" style="scroll-margin-top: 55px;">
+							<div class="pd12 " style="padding-left: 30px;" th:each="answer:${question.answers}">
+								<div class="list-answer">
+									<ul>
+										<li>
+											<i class="far fa-user"></i>Câu trả lời của:
+											<a th:href="@{'/user_other/{id}'(id=${answer.user.id})}"><span
+													th:text="${answer.user.username}"></span></a>
+											<p style="margin-left:43px"><span th:text="${answer.body}"></span></a></p>
+
+										</li>
+
+									</ul>
+								</div>
+								<a th:href="@{'/comment/{id}'(id=${answer.id})}">
+									<h4 class="fw800" style="margin-block-end: 5px;">Bình luận cho câu trả lời này</h4>
+								</a>
+
+								<div class="bg-comment" style="padding-left: 30px;">
+									<ul>
+										<div th:each="commenta:${answer.comments}">
+											<li>
+												<i class="far fa-user"></i>
+												<a th:href="@{'/user_other/{id}'(id=${commenta.user.id})}"><span
+														th:text="${commenta.user.username}"></span></a>
+												<p style="margin-left:43px"><span th:text="${commenta.body}"></span></p>
+
+											</li>
+										</div>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div class="w20 fl" style="height: auto!important; padding-left:140px;">
+			<div>
+				<div th:replace="/fragments/ask :: ask(ask=${ask})"></div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

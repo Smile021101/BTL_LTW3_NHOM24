@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns=http://www.w3.org/1999/xhtml xmlns:th="http://www.thymeleaf.org" lang="vi">
+
+<head th:replace="/fragments/head :: head"></head>
+<style>
+	table,
+	th,
+	td {
+		border: 1px solid black;
+	}
+</style>
+
+<body>
+	<div th:replace="/fragments/search :: search"></div>
+
+	<div class="center">
+		<div class="box-sub">
+			<div th:replace="/fragments/h-sub-menu :: menu(menu=${menu})"></div>
+		</div>
+		<div class="body-center">
+			<div th:replace="/fragments/questions :: questions(questions=${questions})"></div>
+
+		</div>
+		<div class="w20 fl" style="height: auto!important; padding-left:150px;">
+			<div class="col-right no-overflow">
+				<div th:replace="/fragments/ranking :: ranking(ranking=${ranking})"></div>
+			</div>
+			<div>
+				<div th:replace="/fragments/ask :: ask(ask=${ask})"></div>
+			</div>
+		</div>
+	</div>
+	<script src="styles/main.js">
+	</script>
+
+</body>
+
+</html>

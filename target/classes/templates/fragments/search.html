@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+</head>
+
+<body>
+	<form th:object="${user}">
+	<header th:fragment="search">
+		<div class="header">
+			<div class="nav-bar">
+				<div class="logo">
+					<a th:href="@{/}">
+						<img th:src="@{/images/Q&A.jpg}" />
+					</a>
+				</div>
+				<div class="search">
+					<form th:action="@{/search}">
+						<input type="text" name="body" placeholder="Câu hỏi của bạn là gì" />
+						<button type="submit" class="searchButton">Tìm</button>
+					</form>
+				</div>
+
+				<div class="login"><i class="fas fa-user"></i><span style="font-size: 20px;"> Chào mừng</span>
+					<a th:href="@{'/user_other/{id}'(id=${user.id})}"><span th:text="${user.username}"></span></a>
+					<span>|</span>
+					<a th:href="@{/login}">Đăng xuất</a>
+				</div>
+			</div>
+		</div>
+	</header>
+	</form>
+</body>
+
+</html>

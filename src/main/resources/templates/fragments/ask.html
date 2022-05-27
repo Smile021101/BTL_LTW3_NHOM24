@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+</head>
+
+<body>
+	<div th:fragment="ask(ask)">
+		<div class="hidden-xs add-question mt24 pt12" th:object="${user}">
+			<h3>Bạn muốn hỏi điều gì?</h3><a class="mt12 btn-add-ques" th:href="@{'/addquestion/{id}'(id=${user.id})}"><i class="fas fa-question-circle"></i><span>Đặt
+					câu hỏi</span></a>
+		</div>
+	</div>
+</body>
+
+</html>

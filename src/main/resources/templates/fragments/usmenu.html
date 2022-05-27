@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+</head>
+<html>
+
+<body>
+	<div th:fragment="usmenu(usmenu)">
+		<nav class="row">
+			<nav class="navbar navbar-expand-sm navbar-light bg-light col">
+				<a class="navbar-brand" href="/ushome">User</a>
+				<button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+					data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="collapsibleNavId">
+					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+						<li class="nav-item active">
+							<a class="nav-link" href="/ushome">Home<span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" th:href="@{/user/}">
+								<i class="fa fa-id-card" aria-hidden="true"></i> Profile
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" th:href="@{/usquestion/}">
+								<i class="fa fa-info" aria-hidden="true"></i> Question
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" th:href="@{/usanswer/}">
+								<i class="fa fa-info" aria-hidden="true"></i> Answer
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/login">
+								<i class="fa fa-info" aria-hidden="true"></i> Log Out
+							</a>
+						</li>
+					</ul>
+				</div>
+
+			</nav>
+		</nav>
+	</div>
+</body>
+
+</html>

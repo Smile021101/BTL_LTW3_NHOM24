@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Question & Answer Online</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+</head>
+
+<body>
+	<form action="/aduser" method="post">
+		<main class="container-fluid">
+			<div th:replace="/fragments/menu :: admenu(admenu=${admenu})"></div>
+			<pre><h5>User total: <span th:text="${users.size()}"></span></h5></pre>
+			<h5>List User:</h5>
+
+			<table class="table table-stripe" style="text-align: center;">
+				<tr>
+					<td>Username</td>
+					<td>Email</td>
+					<td>Fullname</td>
+					<td>Phone</td>
+					<td>Số câu hỏi</td>
+					<td>Số câu trả lời</td>
+					<td>&nbsp;</td>
+				</tr>
+				<div th:each="user : ${users}">
+					<tr>
+						<td><span th:text="${user.username}"></span></td>
+						<td><span th:text="${user.email}"></span></td>
+						<td><span th:text="${user.fullname}"></span></td>
+						<td><span th:text="${user.phone}"></span></td>
+						<td><span th:text="${user.questions.size()}"></span></td>
+						<td><span th:text="${user.answer.size()}"></span></td>
+						<td>
+							<a th:href="@{'/aduser/{id}'(id=${user.id})}"><i class="fa fa-trash"
+									aria-hidden="true"></i>Delete</a>
+						</td>
+					</tr>
+				</div>
+			</table>
+			<footer class="row"></footer>
+		</main>
+	</form>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head :: head"></head>
+
+<body>
+	<div class="container">
+		<h2 class="fw800" style="text-align: center;">Register</h2>
+		<form th:action="@{/register}" method="post" th:object="${user}">
+			<div>
+				<input type="text" placeholder="UserName" th:field="*{username}" />
+				<p th:if="${#fields.hasErrors('username')}" th:errorclass="error" th:errors="*{username}" />
+			</div>
+			<div>
+				<input type="password" placeholder="Password" th:field="*{password}" />
+				<p th:if="${#fields.hasErrors('password')}" class="error">Password must be at least 8 character.</p>
+			</div>
+			<div>
+				<input type="text" placeholder="Fullname" th:field="*{fullname}" />
+				<p th:if="${#fields.hasErrors('fullname')}" th:errorclass="error" th:errors="*{fullname}" />
+			</div>
+			<div>
+				<input type="text" placeholder="Email" th:field="*{email}" />
+				<p th:if="${#fields.hasErrors('email')}" th:errorclass="error" th:errors="*{email}" />
+			</div>
+			<div>
+				<input type="text" placeholder="Phone" th:field="*{phone}" />
+				<p th:if="${#fields.hasErrors('phone')}" th:errorclass="error" th:errors="*{phone}" />
+			</div>
+			<div>
+				<input type="submit" class="green-btn blue-btn" value="Register" />
+			</div>
+
+		</form>
+		<form th:action="@{/login}" method="get" th:object="${user}">
+			<div>
+				<input type="submit" class="green-btn blue-btn" value="Cancel" />
+			</div>
+		</form>
+	</div>
+
+	<footer th:replace="/fragments/footer :: footer"></footer>
+
+</body>
+
+</html>

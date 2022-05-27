@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+</head>
+
+<body>
+	<div th:fragment="questions(questions)">
+		<div class="h-question">
+			<div class="info-question1" th:if="${message}">
+				<h2 class="pb12 fw800" style="text-align: center;">Không có câu hỏi về lĩnh vực</h2>
+			</div>
+			<div class="form-question fr" th:each="question : ${questions}" th:unless="${message}">
+
+				<div class="info-question1">
+					<ul>
+						<li>Được hỏi bởi
+							<a th:href="@{'/user_other/{id}'(id=${question.user.id})}">
+								<span th:text="${question.user.username}" style="font-size: 20px;">
+								</span>
+							</a>
+						</li>
+						<li>Lĩnh vực
+							<a
+								th:href="@{'/{field}'(field=${question.field.substring(0,3)+question.field.substring(4)})}">
+								<span th:text="${question.field}">
+								</span>
+							</a>
+						</li>
+						<li style="font-size: 14px;">
+							<pre>Ngày: <span th:text="${#dates.format(question.creationDate, 'dd MMMM YYYY')}"></span>,
+								lúc: <span th:text="${#dates.format(question.creationDate, 'HH:MM')}"></span></pre>
+						</li>
+					</ul>
+				</div>
+				<div class="info-question2" style="padding-top: 30px; padding-left: 10px;">
+					<a th:href="@{'/question/{id}'(id=${question.id})}">
+						<span th:text="${question.body}">
+						</span>
+					</a>
+				</div>
+				<div>
+					<a class="btn-answer fr" th:href="@{'/answer/{id}'(id=${question.id})}">Trả lời</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+
+</html>
