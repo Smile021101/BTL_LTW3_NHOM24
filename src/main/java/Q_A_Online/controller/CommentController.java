@@ -32,7 +32,7 @@ public class CommentController {
 	}
 
 	@GetMapping("/{id}")
-	public String showAddForm(@PathVariable Long id,Model model,HttpSession session) {
+	public String showAddCommentForm(@PathVariable Long id,Model model,HttpSession session) {
 		User user=(User) session.getAttribute("currentUser");
 		model.addAttribute("user",user);
 		Optional<Answer> answer1=answerRepo.findById(id);

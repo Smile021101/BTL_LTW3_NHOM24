@@ -21,7 +21,7 @@ public class UserOtherController {
 		this.userRepo=userRepo;
 	}
 	@GetMapping("/{id}")
-	public String showAddForm(@PathVariable Long id, Model model, HttpSession session) {
+	public String showUserOrtherForm(@PathVariable Long id, Model model, HttpSession session) {
 		Optional<User> user = userRepo.findById(id);
 		model.addAttribute("user",user.get());
 		User userr = (User) session.getAttribute("currentUser");

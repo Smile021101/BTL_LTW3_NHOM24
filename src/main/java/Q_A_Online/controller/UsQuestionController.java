@@ -39,7 +39,7 @@ public class UsQuestionController {
 	}
 
 	@GetMapping("/")
-	public String showAdQuestionForm(Model model,HttpSession session) {
+	public String showUsQuestionForm(Model model,HttpSession session) {
 		User user=(User) session.getAttribute("currentUser");
 		model.addAttribute(user);
 		List<Question> questions=new ArrayList<>();

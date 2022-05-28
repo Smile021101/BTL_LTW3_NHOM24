@@ -34,14 +34,14 @@ public class LoginController {
 	}
 
 	@GetMapping
-	public String showAddForm(Model model, HttpSession session) {
+	public String showLoginForm(Model model, HttpSession session) {
 		//session.removeAttribute("currentUser");
 		model.addAttribute("user", new User());
 		return "login";
 	}
 
 	@PostMapping
-	public String addUser(@Valid User user1, BindingResult result, Model model, HttpSession session) {
+	public String checkLogin(@Valid User user1, BindingResult result, Model model, HttpSession session) {
 		if (userRepo.findByUsernameAndPassword(user1.getUsername(), user1.getPassword()) != null) {
 			User user = (User) userRepo.findByUsernameAndPassword(user1.getUsername(), user1.getPassword());
 			session.setAttribute("currentUser", user);

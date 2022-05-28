@@ -2,8 +2,10 @@
 <html>
 
 <head>
+	
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<head th:replace="/fragments/head :: head"></head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -20,6 +22,7 @@
 
 <body>
 	<form action="/user_other" th:object="${user}">
+		<div th:replace="/fragments/search :: search"></div>
 		<div class="container">
 			<div class="Jumbotron text-center">
 				<h3><span class="glyphicon glyphicon-user"></span>Thông tin cá nhân</h3>
@@ -29,7 +32,6 @@
 							<th>Username</th>
 							<th>Email</th>
 							<th>FullName</th>
-							<th>Phone</th>
 							<th>Số câu hỏi</th>
 							<th>Số câu trả lời</th>
 						</tr>
@@ -39,7 +41,6 @@
 							<td><span th:text="${user.username}"></span></td>
 							<td><span th:text="${user.email}"></span></td>
 							<td><span th:text="${user.fullname}"></span></td>
-							<td><span th:text="${user.phone}"></span></td>
 							<td><span th:text="${user.questions.size()}"></span></td>
 							<td><span th:text="${user.answer.size()}"></span></td>
 						</tr>

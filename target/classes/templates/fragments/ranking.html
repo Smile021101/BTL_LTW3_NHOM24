@@ -7,31 +7,29 @@
 </head>
 
 <body>
-	<form action="/">
-		<div th:fragment="ranking(ranking)">
-			<h3><a href="/bang-xep-hang" title="Bảng xếp hạng"
-					style="color: rgb(69, 142, 167); text-decoration: underline;">Thành viên hăng hái nhất</a></h3>
-			<table class="table table-bordered" style="border:1px solid black;  text-align: center;">
-				<thead>
+	<div th:fragment="ranking(ranking)">
+		<h3><a href="/bang-xep-hang" title="Bảng xếp hạng"
+				style="color: rgb(69, 142, 167); text-decoration: underline;">Thành viên hăng hái nhất</a></h3>
+		<table class="table table-bordered" style="border:1px solid black;  text-align: center;">
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>Số câu hỏi</th>
+					<th>Số câu trả lời</th>
+				</tr>
+			</thead>
+			<div th:each="user : ${users}" style="padding-left: 30px;">
+				<tbody>
 					<tr>
-						<th>Username</th>
-						<th>Số câu hỏi</th>
-						<th>Số câu trả lời</th>
+						<td><span th:text="${user.username}"></span></td>
+						<td><span th:text="${user.questions.size()}"></span></td>
+						<td><span th:text="${user.answer.size()}"></span></td>
 					</tr>
-				</thead>
-				<div th:each="user : ${users}" style="padding-left: 30px;">
-					<tbody>
-						<tr>
-							<td><span th:text="${user.username}"></span></td>
-							<td><span th:text="${user.questions.size()}"></span></td>
-							<td><span th:text="${user.answer.size()}"></span></td>
-						</tr>
-					</tbody>
-				</div>
-			</table>
+				</tbody>
+			</div>
+		</table>
 
-		</div>
-	</form>
+	</div>
 </body>
 
 </html>

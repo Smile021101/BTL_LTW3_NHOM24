@@ -35,7 +35,6 @@ public class HomeController {
 		model.addAttribute(user);
 		List<User> users = new ArrayList<>();
 		userRepo.findAll().forEach(users::add);
-		System.out.println(users.size());
 		model.addAttribute("users", users);
 		List<Question> questions = new ArrayList<>();
 		questionRepo.findAll().forEach(questions::add);
@@ -46,7 +45,7 @@ public class HomeController {
 	
 
 	@GetMapping("/Doisong")
-	public String showQuestionOfMathForm(Model model, HttpSession sestion) {
+	public String showQuestionOfLifeForm(Model model, HttpSession sestion) {
 		User user = (User) sestion.getAttribute("currentUser");
 		if (user == null) {
 			return "redirect:/login";
@@ -54,7 +53,6 @@ public class HomeController {
 		model.addAttribute(user);
 		List<User> users = new ArrayList<>();
 		userRepo.findAll().forEach(users::add);
-		System.out.println(users.size());
 		model.addAttribute("users", users);
 		List<Question> questions = new ArrayList<>();
 		questionRepo.findByField("Doi song").forEach(questions::add);
@@ -63,7 +61,7 @@ public class HomeController {
 	}
 
 	@GetMapping("/Nauan")
-	public String showQuestionOfPhysicsForm(Model model, HttpSession sestion) {
+	public String showQuestionOfCookingForm(Model model, HttpSession sestion) {
 		User user = (User) sestion.getAttribute("currentUser");
 		if (user == null) {
 			return "redirect:/login";
@@ -71,7 +69,6 @@ public class HomeController {
 		model.addAttribute(user);
 		List<User> users = new ArrayList<>();
 		userRepo.findAll().forEach(users::add);
-		System.out.println(users.size());
 		model.addAttribute("users", users);
 		List<Question> questions = new ArrayList<>();
 		questionRepo.findByField("Nau an").forEach(questions::add);
@@ -80,7 +77,7 @@ public class HomeController {
 	}
 
 	@GetMapping("/Hoctap")
-	public String showQuestionOfChemistryForm(Model model, HttpSession sestion) {
+	public String showQuestionOfStudyForm(Model model, HttpSession sestion) {
 		User user = (User) sestion.getAttribute("currentUser");
 		if (user == null) {
 			return "redirect:/login";
@@ -88,14 +85,9 @@ public class HomeController {
 		model.addAttribute(user);
 		List<User> users = new ArrayList<>();
 		userRepo.findAll().forEach(users::add);
-		System.out.println(users.size());
 		model.addAttribute("users", users);
 		List<Question> questions = new ArrayList<>();
 		questionRepo.findByField("Hoc tap").forEach(questions::add);
-		if(questions.isEmpty()) {
-			model.addAttribute("message", "Không có câu hỏi về lĩnh vực học tập");
-			return "home";
-		}
 		model.addAttribute("questions", questions);
 		return "home";
 	}
@@ -109,7 +101,6 @@ public class HomeController {
 		model.addAttribute(user);
 		List<User> users = new ArrayList<>();
 		userRepo.findAll().forEach(users::add);
-		System.out.println(users.size());
 		model.addAttribute("users", users);
 		List<Question> list = null;
 		if (body != null) {

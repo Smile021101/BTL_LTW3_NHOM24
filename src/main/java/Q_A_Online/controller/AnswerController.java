@@ -35,7 +35,7 @@ public class AnswerController {
 	}
 
 	@GetMapping("/{id}")
-	public String showAddForm(@PathVariable Long id, Model model, HttpSession sesstion) {
+	public String showAddAnswerForm(@PathVariable Long id, Model model, HttpSession sesstion) {
 		  User user=(User) sesstion.getAttribute("currentUser");
 		  model.addAttribute(user); 
 		  Optional<Question> question=questionRepo.findById(id); 
@@ -47,7 +47,7 @@ public class AnswerController {
 	}
 
 	@PostMapping
-	public String addQuestion(Answer answer, Model model, HttpSession sesstion) {
+	public String addAnswer(Answer answer, Model model, HttpSession sesstion) {
 		answer.setQuestion(question);
 		answer.setUser((User)sesstion.getAttribute("currentUser"));
 		answerRepo.save(answer);
